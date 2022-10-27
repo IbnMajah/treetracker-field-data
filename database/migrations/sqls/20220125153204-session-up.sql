@@ -1,4 +1,4 @@
-CREATE TABLE session
+CREATE TABLE IF NOT EXISTS session
 (
     id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
     device_configuration_id uuid NOT NULL REFERENCES device_configuration(id),

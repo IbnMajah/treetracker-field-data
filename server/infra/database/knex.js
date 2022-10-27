@@ -2,11 +2,11 @@ const knex = require('knex');
 const knexLegacyDB = require('knex');
 const log = require('loglevel');
 const connection = require('../../../config/config').connectionString;
-const connectionLegacyDB = require('../../../config/config')
-  .connectionStringLegacyDB;
+const connectionLegacyDB =
+  require('../../../config/config').connectionStringLegacyDB;
 
 const postgresPattern = /^postgresql:\//;
-
+console.log('database url: ' + connection);
 if (
   !postgresPattern.test(connection) ||
   !postgresPattern.test(connectionLegacyDB)
@@ -18,7 +18,7 @@ const connectionObject = (connectionString) => {
   // We need to parse the connection string into a connection object
   // so that pg 8  won't throw an SSL error when connecting to the postgres database
   // when running node version greater than 12
-  const urlregexp = /postgresql:\/\/(.+):(.+)@(.+):(\d+)\/(.+)\?ssl=true/g;
+  const urlregexp = /postgresql:\/\/(.+):(.+)@(.+):(\d+)\/(.+)/g;
   const dbConnValues = [...connectionString.matchAll(urlregexp)][0];
   let connObject = null;
   if (dbConnValues && dbConnValues.length > 0) {

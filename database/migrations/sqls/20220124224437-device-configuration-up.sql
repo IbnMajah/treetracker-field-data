@@ -1,4 +1,4 @@
-CREATE TABLE device_configuration
+CREATE TABLE IF NOT EXISTS device_configuration
 (
     id uuid NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
     device_identifier varchar NOT NULL,

@@ -6,7 +6,7 @@ const log = require('loglevel');
 const Session = require('../infra/database/Sessions/Session');
 const DomainEvent = require('../models/DomainEvent');
 const RawCapture = require('../models/RawCapture');
-const QueueService = require('./QueueService');
+// const QueueService = require('./QueueService');
 
 const DictEventHandlers = Object.freeze({
   CaptureCreated: async (payload, session) => {
@@ -20,16 +20,16 @@ class EventHandlerService {
     this._session = new Session();
   }
 
-  async registerEventHandlers() {
-    const queueService = new QueueService();
-    await queueService.init();
-    queueService.subscribeToCaptureCreationEvent((message) =>
-      this.processMessage(DictEventHandlers.CaptureCreated, {
-        ...message,
-        type: 'CaptureCreated',
-      }),
-    );
-  }
+  // async registerEventHandlers() {
+  //   const queueService = new QueueService();
+  //   await queueService.init();
+  //   queueService.subscribeToCaptureCreationEvent((message) =>
+  //     this.processMessage(DictEventHandlers.CaptureCreated, {
+  //       ...message,
+  //       type: 'CaptureCreated',
+  //     }),
+  //   );
+  // }
 
   async applyEventHandler(eventHandler, domainEvent) {
     const domainEventModel = new DomainEvent(this._session);

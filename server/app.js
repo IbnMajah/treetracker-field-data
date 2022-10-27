@@ -11,7 +11,7 @@ const app = express();
 const config = require('../config/config');
 const { EventHandlerService } = require('./services/EventHandlerService');
 
-Sentry.init({ dsn: config.sentry_dsn });
+// Sentry.init({ dsn: config.sentry_dsn });
 
 if (process.env.NODE_ENV === 'development') {
   log.info('disable cors');
@@ -46,7 +46,6 @@ app.use(bodyParser.json()); // parse application/json
 app.use('/', router);
 // Global error handler
 app.use(errorHandler);
-
 const { version } = require('../package.json');
 
 app.get('*', function (req, res) {
@@ -54,8 +53,8 @@ app.get('*', function (req, res) {
 });
 
 const eventHandlerService = new EventHandlerService();
-(async () => {
-  await eventHandlerService.registerEventHandlers();
-})();
+// (async () => {
+//   await eventHandlerService.registerEventHandlers();
+// })();
 
 module.exports = app;

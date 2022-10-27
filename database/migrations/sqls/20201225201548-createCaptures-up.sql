@@ -1,5 +1,5 @@
 /* Replace with your SQL commands */
-CREATE TABLE raw_capture
+CREATE TABLE IF NOT EXISTS raw_capture
 (
     id uuid NOT NULL PRIMARY KEY,
     reference_id int8 NOT NULL,
