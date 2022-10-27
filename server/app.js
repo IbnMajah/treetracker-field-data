@@ -1,15 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const log = require('loglevel');
-const Sentry = require('@sentry/node');
+// const Sentry = require('@sentry/node');
 const bodyParser = require('body-parser');
 const HttpError = require('./utils/HttpError');
 const { errorHandler, handlerWrapper } = require('./utils/utils');
 const router = require('./routes');
 
 const app = express();
-const config = require('../config/config');
-const { EventHandlerService } = require('./services/EventHandlerService');
+// const config = require('../config/config');
+// const { EventHandlerService } = require('./services/EventHandlerService');
 
 // Sentry.init({ dsn: config.sentry_dsn });
 
@@ -52,7 +52,7 @@ app.get('*', function (req, res) {
   res.status(200).send(version);
 });
 
-const eventHandlerService = new EventHandlerService();
+// const eventHandlerService = new EventHandlerService();
 // (async () => {
 //   await eventHandlerService.registerEventHandlers();
 // })();

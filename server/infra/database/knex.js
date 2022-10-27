@@ -6,7 +6,6 @@ const connectionLegacyDB =
   require('../../../config/config').connectionStringLegacyDB;
 
 const postgresPattern = /^postgresql:\//;
-console.log('database url: ' + connection);
 if (
   !postgresPattern.test(connection) ||
   !postgresPattern.test(connectionLegacyDB)
